@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color</title> 
+    <title>Color</title>
     <style>
-        .contenedor{
+        .contenedor {
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
-        .superior{
+
+        .superior {
             flex: 1;
             background-color: aquamarine;
             text-align: center;
             padding: 20px;
         }
-        .inferior{
+
+        .inferior {
             flex: 1;
             background-color: gainsboro;
             text-align: center;
@@ -24,11 +27,14 @@
         }
     </style>
 </head>
+
 <body>
     <div class="contenedor">
         <div onclick="cambioColorS()" class="superior" id="superior"></div>
         <div onclick="cambioColorI()" class="inferior" id="inferior"></div>
+                
     </div>
     <script src="javascript.js"></script>
 </body>
+
 </html>
