@@ -1,12 +1,14 @@
-function crearColor(element) {
+function crearColor(element,esSuperior) {
     let randomColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
     element.style.backgroundColor = randomColor;
 
     let cuadro = element.querySelector('.cuadro');
+    const imagen_url = 'https://images.pexels.com/photos/32495048/pexels-photo-32495048.jpeg?_gl=1*68kj4m*_ga*NDE1OTgzMTg3LjE3NTA4MjU2OTY.*_ga_8JE65Q40S6*czE3NTA4MjU2OTUkbzEkZzEkdDE3NTA4MjU3NDkkajYkbDAkaDA.';
+    const imagen_tamano = '40px';
 
     if (!cuadro) {
-        cuadro = document.createElement('div');      
-        cuadro.className = 'cuadro'; 
+        cuadro = document.createElement('div');
+        cuadro.className = 'cuadro';
         element.appendChild(cuadro);
 
         Object.assign(cuadro.style, {
@@ -24,28 +26,25 @@ function crearColor(element) {
         });
 
         let img = document.createElement('img');
-        img.src = 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg';
+        img.src = imagen_url;
         img.alt = 'Imagen en el cuadro';
 
-        Object.assign(img.style, {
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain'
-        })
+        if (esSuperior) {
+           
+            Object.assign(img.style, {
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover' 
+            });
+        } else {
+            
+            Object.assign(img.style, {
+                width: imagen_tamano,
+                height: imagen_tamano,
+                objectFit: 'none' 
+            });
+        }
         cuadro.appendChild(img);
-
-        //Inicializar la rotación 
-        cuadro.dataset.rotation = 0; // Usamos dataset para almacenar el ángulo actual
-
-        //Añadir evento de clic al cuadro para rotar
-        cuadro.onclick = function (event) {
-            event.stopPropagation();
-
-            let currentRotation = parseInt(this.dataset.rotation); // Obtener rotación actual
-            let newRotation = currentRotation + 90; // Aumentar en 90 grados
-            this.style.transform = `rotate(${newRotation}deg)`; // Aplicar la rotación
-            this.dataset.rotation = newRotation; // Guardar la nueva rotación
-        };
     }
 
     let cuadroColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
